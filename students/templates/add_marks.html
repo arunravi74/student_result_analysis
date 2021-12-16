@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+<form method= "Post">
+    {% csrf_token %}
+    <input type="hidden" name="student_id"  value="disabled">
+    <input type="text" name="marks"  value="{{form.marks}}">
+    {{form.as_p}}
+    <button type="submit">Add Marks</button>
+</form> 
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block content %}
+<h3>Total Number of students are {{data}}</h3>   
+<table>
+    <th>Grade</th>
+    <th>Number of Students</th>
+    {% for k,v in grade.items %}   
+        <tr>
+            <td>{{k}}</td>
+            <td>{{v}}</td>            
+                                    
+        </tr>   
+    {% endfor %}
+</table>
+<h3>Distinction Percentage = {{distinction|floatformat:"1"}}%</h3>
+<h3>Firstclass Percentage = {{first_class|floatformat:"1"}}%</h3>
+<h3>Pass Percentage = {{pass|floatformat:"1"}}%</h3>
+
+{% endblock %}

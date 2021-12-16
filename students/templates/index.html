@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <title>Student details</title>
+</head>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }    
+</style>
+<body>
+    {% block content %}
+    <div>
+        <form method= "Post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">Save </button>
+	    </form> 
+    </div>
+    <br>
+    <br>
+    <hr>
+    {% if not students %}
+        <h4>Students Not Found</h4>
+    {% else %}
+        <table>
+            <thead>
+                <th>Student_ID</th>
+                <th colspan="2">Name</th>
+                <th colspan="2">DOB</th>
+                <th colspan="2">Roll-no</th>
+                <th colspan="2">Action</th>
+            </thead>
+            {% for i in students %}        
+            <tr>
+                <td>{{i.id}}</td>
+                <td colspan="2">{{i.name}}</td>
+                <td colspan="2">{{i.date_of_birth}}</td>
+                <td colspan="2">{{i.roll_number}}</td>
+                <td colspan="2"><a href="{{i.id}}/marks/add/" > Add Mark</a>/<a href="{{i.id}}/marks/">View Mark</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

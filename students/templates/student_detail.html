@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block content %}
+{% if data %}
+    {% for i in data %}
+        <h3>{{i.name|title}} has secured {{i.marks}} Marks<h3>
+    {% endfor %}
+{% else %}
+    <h3>Student Not Found</h3>
+{% endif %}
+{% endblock %}
